@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScorePlay - Login, Cadastro e Início</title>
+
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #1f1f1f;
+            font-family: "Poppins", sans-serif;
+        }
+
+        /* ------ LOGIN ------ */
+        #login-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            background: white;
+            padding: 50px;
+            width: 460px;
+            border-radius: 4px;
+        }
+
+        .logo-section {
+            color: white;
+            margin-right: 80px;
+        }
+
+        .logo-section h1 {
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        .form-control {
+            border: 2px solid black;
+            border-radius: 0;
+            padding: 12px;
+        }
+
+        .btn-dark-custom {
+            background: #222;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border-radius: 0;
+            border: 2px solid #222;
+            font-weight: 600;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .divider span {
+            margin: 0 10px;
+            color: #555;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #aaa;
+        }
+
+        .btn-outline-custom {
+            border: 2px solid black;
+            border-radius: 0;
+            padding: 10px 20px;
+            font-weight: 600;
+            background: white;
+        }
+
+        /* ------ CADASTRO ------ */
+        #cadastro-section {
+            padding: 80px 0;
+        }
+
+        .logo-title {
+            font-size: 48px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .card-cadastro {
+            background: white;
+            padding: 40px;
+            width: 500px;
+            margin: auto;
+            border-radius: 4px;
+        }
+
+        .btn-enviar {
+            width: 100%;
+            padding: 12px;
+            background: #222;
+            color: white;
+            border: none;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .arrow-back {
+            font-size: 48px;
+            color: rgb(146, 129, 129);
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        /* ------ DASHBOARD ------ */
+        .menu-item {
+            padding: 12px;
+            margin-top: 10px;
+            background-color: #4a4a4a;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .menu-item:hover {
+            background-color: #606060;
+        }
+
+        .feed-content {
+            background: #2c2c2c;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+
+        /* ======================================================= */
+        /* ======================= JOGOS ========================== */
+        /* ======================================================= */
+
+        #jogos-section {
+            min-height: 100vh;
+            padding: 60px 0;
+            background: #1b1b1b;
+            color: white;
+        }
+
+        .jogos-topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+        }
+
+        .jogos-logo {
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        .jogos-icon {
+            background: #111;
+            width: 65px;
+            height: 65px;
+            border-radius: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+        }
+
+        .titulo-jogos {
+            text-align: center;
+            font-size: 36px;
+            letter-spacing: 5px;
+            margin-top: 10px;
+            margin-bottom: 40px;
+        }
+
+        .grid-jogos {
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .card-jogo {
+            background: #0b132b;
+            padding: 40px;
+            border-radius: 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 25px;
+
+            font-size: 22px;
+        }
+
+        .linha {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info-time {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .info-time img {
+            width: 35px;
+        }
+
+        .placar {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .vermelho {
+            color: #ff2a2a;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ******************************** -->
+    <!--            LOGIN                 -->
+    <!-- ******************************** -->
+    <section id="login-section">
+        <div class="d-flex align-items-center justify-content-center">
+            <div class="logo-section text-center">
+                <img src="marca.jpeg" width="260" class="mb-3" />
+                <h1>ScorePlay</h1>
+            </div>
+
+            <div class="login-container shadow">
+                <h3 class="text-center mb-4 fw-bold">LOGIN</h3>
+
+                <input type="text" class="form-control mb-3" placeholder="Usuário" />
+
+                <button class="btn btn-dark-custom mb-3"
+                    onclick="document.getElementById('cadastro-section').scrollIntoView({behavior:'smooth'})">
+                    ENTRAR
+                </button>
+
+                <div class="divider"><span>OU</span></div>
+
+                <div class="d-flex justify-content-between gap-2">
+                    <button class="btn btn-outline-custom w-50">
+                        GOOGLE <img src="google.jpg" width="20px">
+                    </button>
+
+                    <button class="btn btn-outline-custom w-50"
+                        onclick="document.getElementById('cadastro-section').scrollIntoView({behavior:'smooth'})">
+                        CADASTRAR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ******************************** -->
+    <!--            CADASTRO              -->
+    <!-- ******************************** -->
+    <section id="cadastro-section">
+
+        <div class="arrow-back"
+            onclick="document.getElementById('login-section').scrollIntoView({behavior:'smooth'})">
+            &#8592;
+        </div>
+
+        <h1 class="logo-title">ScorePlay</h1>
+
+        <div class="card-cadastro">
+            <h3 class="mb-4">CADASTRAR USUÁRIO</h3>
+
+            <input type="text" class="form-control mb-3" placeholder="NOME" />
+            <input type="password" class="form-control mb-3" placeholder="SENHA" />
+            <input type="text" class="form-control mb-4" placeholder="POSIÇÃO" />
+
+            <button class="btn-enviar"
+                onclick="document.getElementById('dashboard').scrollIntoView({behavior:'smooth'})">
+                CADASTRAR
+            </button>
+
+            <div class="divider mt-3">ENTRAR</div>
+        </div>
+
+    </section>
+
+    <!-- ******************************** -->
+    <!--            INÍCIO                -->
+    <!-- ******************************** -->
+    <section id="dashboard">
+
+        <div class="d-flex" style="min-height: 100vh; overflow-x: hidden;">
+
+            <!-- SIDEBAR -->
+            <div class="sidebar text-white d-flex flex-column"
+            style="width: 260px; background-color: #3a3a3a; padding: 25px 20px;">
+
+            <h2 style="font-weight: 700; font-size: 32px;">ScorePlay</h2>
+
+            <div class="text-center mt-4">
+                <img src="perfil.png" style="width: 75px; height: 75px;" />
+                <h5 class="mt-2">PERFIL</h5>
+            </div>
+
+            <div class="menu-item">Criar Partida</div>
+            <div class="menu-item">Criar Campeonato</div>
+            <div class="menu-item">Jogadores</div>
+            <div class="menu-item">Calendário de Jogos</div>
+            <div class="menu-item">Classificação</div>
+
+             <!-- 🔥 NOVO BOTÃO QUE VOCÊ PEDIU -->
+            <div class="menu-item" onclick="document.getElementById('jogos-section').scrollIntoView({behavior:'smooth'})">
+            Jogos
+        </div>
+
+    </div>
+
+
+            <!-- CONTEÚDO -->
+            <div class="container-fluid p-4 text-white">
+
+                <h3>Bem-vindo ao ScorePlay!</h3>
+
+                <div class="feed-content mt-4">
+
+                    <h5 class="mb-3">📢 Últimas Notícias</h5>
+
+                    <p>Veja as novidades dos jogos, amistosos e campeonatos.</p>
+
+                    <div id="carouselFeed" class="carousel slide mt-3" data-bs-ride="carousel">
+
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item active">
+                                <img src="foto.png" class="d-block w-100 rounded">
+                            </div>
+
+                            <div class="carousel-item">
+                                <img src="foto2.png" class="d-block w-100 rounded">
+                            </div>
+
+                            <div class="carousel-item">
+                                <img src="foto3.png" class="d-block w-100 rounded">
+                            </div>
+
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselFeed"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselFeed"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ******************************** -->
+    <!--              JOGOS              -->
+    <!-- ******************************** -->
+    <section id="jogos-section">
+
+        <div class="jogos-topo">
+            <div class="jogos-logo">ScorePlay</div>
+            <div class="jogos-icon">⚽</div>
+        </div>
+
+        <h2 class="titulo-jogos">JOGOS</h2>
+
+        <div class="grid-jogos">
+
+            <!-- CARD 1 -->
+            <div class="card-jogo">
+                <div class="linha">
+                    <div class="info-time">
+                        <img src="sao.png">
+                        <span>São Paulo</span>
+                    </div>
+                    <span class="placar">2</span>
+                </div>
+
+                <div class="linha">
+                    <div class="fla">
+                        <img src="fla.jpg" width="35px" margin="9526px">
+                        <span>       Flamengo <span class="vermelho">■</span></span>
+                    </div>
+                    <span class="placar">2</span>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="card-jogo">
+                <div class="linha">
+                    <div class="bota.png">
+                        <img src="bota.png" width="35px">
+                        <span>      Botafogo</span>
+                    </div>
+                    <span class="placar">1</span>
+                </div>
+
+                <div class="linha">
+                    <div class="info-time">
+                        <img src="pal.png">
+                        <span>Palmeiras</span>
+                    </div>
+                    <span class="placar">0</span>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="card-jogo">
+                <div class="linha">
+                    <div class="info-time">
+                        <img src="cori.png">
+                        <span>Corinthians</span>
+                    </div>
+                    <span class="placar">3</span>
+                </div>
+
+                <div class="linha">
+                    <div class="info-time">
+                        <img src="san.png">
+                        <span>Santos</span>
+                    </div>
+                    <span class="placar">1</span>
+                </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="card-jogo">
+                <div class="linha">
+                    <div class="info-time">
+                        <img src="Gremio.webp">
+                        <span>Grêmio</span>
+                    </div>
+                    <span class="placar">0</span>
+                </div>
+
+                <div class="linha">
+                    <div class="info-time">
+                        <img src="inter.png">
+                        <span>Internacional</span>
+                    </div>
+                    <span class="placar">2</span>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
