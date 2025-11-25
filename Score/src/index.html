@@ -82,10 +82,11 @@
         }
 
         .btn-outline-custom {
-            border: 2px solid #000;
+            color: black;
+            border: 2px solid #000000;
             padding: 10px 0;
             font-weight: 600;
-            background: white;
+            background: rgb(255, 255, 255);
             border-radius: 6px;
         }
 
@@ -339,6 +340,7 @@
             justify-content: space-between;
             padding: 0 60px;
             align-items: center;
+            cursor: pointer;
         }
 
         .jogos-logo {
@@ -352,9 +354,13 @@
             background: #000;
             border-radius: 16px;
             display: flex;
+            position: absolute;
             justify-content: center;
             align-items: center;
-            font-size: 32px;
+            top: 2209px;
+            right: 100px;
+            
+            
         }
 
         .titulo-jogos {
@@ -400,6 +406,84 @@
             color: red;
             font-weight: bold;
         }
+        
+        /*Tabela*/
+            body {
+            background: #121212;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            padding: 40px 0;
+        }
+
+        .header-topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 60px;
+        }
+
+        .titulo-principal {
+            font-size: 50px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .subtitulo {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-top: 20px;
+            letter-spacing: 2px;
+        }
+
+        .tabela-wrapper {
+            width: 92%;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+        }
+
+        .tabela-card {
+            background: #111;
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+        }
+
+        .linha-time {
+            display: grid;
+            grid-template-columns: 25px 35px 1fr 40px 40px 40px 30px; 
+            /* pos | img | nome | pts | jogos | vit | status */
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            border-bottom: 1px solid #333;
+        }
+
+        .linha-time img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .imagem {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 2840px;
+            right: 80px;
+        }
+
+        .status {
+            font-size: 14px;
+        }
+
+        .green { color: #35ff59; }
+        .red { color: #ff4040; }
+        .gray { color: #bfbfbf; }
+
     </style>
 </head>
 
@@ -415,19 +499,22 @@
 
         <div class="login-container shadow">
             <h3 class="text-center mb-4 fw-bold">LOGIN</h3>
-
+            
             <input type="text" class="form-control mb-3" placeholder="Usuário">
+            
+            <input type="password" class="form-control mb-4" placeholder="Senha">
 
-            <button class="btn-dark-custom mb-3"
-                onclick="document.getElementById('cadastro-section').scrollIntoView({behavior:'smooth'})">
-                ENTRAR
-            </button>
+
+            <button class="btn-enviar"
+                onclick="document.getElementById('dashboard').scrollIntoView({behavior:'smooth'})">
+           Entrar 
+        </button>
 
             <div class="divider"><span>OU</span></div>
 
             <div class="d-flex gap-2">
                 <button class="btn-outline-custom w-50">
-                    GOOGLE <img src="google.jpg" width="20">
+                    GOOGLE <img src="google.jpg" width="20" font-size="14px" style="margin-left: 6px; color:black;" color>
                 </button>
 
                 <button class="btn-outline-custom w-50"
@@ -479,7 +566,10 @@
             <nav class="menu">
                 <div class="menu-item">Criar Partida</div>
                 <div class="menu-item">Criar Campeonato</div>
-                <div class="menu-item">Jogadores</div>
+                <div class="menu-item"
+                    onclick="document.getElementById('Classificação').scrollIntoView({behavior:'smooth'})">
+                    Classificação
+                </div>
                 <div class="menu-item">Calendário de Jogos</div>
 
                 <div class="menu-item"
@@ -535,13 +625,16 @@
     </div>
 </section>
 
-
-
+                
 <!-- JOGOS -->
 <section id="jogos-section">
 
-    <div class="jogos-topo">
-        <div class="jogos-logo">ScorePlay</div>
+   <div class="jogos-topo">
+    <div class="jogos-logo" onclick="document.getElementById('dashboard').scrollIntoView({behavior:'smooth'})">
+        ScorePlay
+             </div>
+         </div>
+
         <div class="jogos-icon"> <img src="logomarca.png" width="100" style="border-radius: 50%; object-fit: cover;"></div>
     </div>
 
@@ -627,6 +720,47 @@
 
     </div>
 </section>
+
+
+ <div class="header-topo" id="Classificação">
+        <div class="titulo-principal" onclick="document.getElementById('dashboard').scrollIntoView({behavior:'smooth'})">
+        SCOREPLAY 
+        </div>
+     </div>
+
+        <div class="imagem"><img src="logomarca.png" width="80" style="border-radius: 16px;"></div>
+    </div>
+
+    <div class="subtitulo">TABELA DO CAMPEONATO</div>
+
+    <div class="tabela-wrapper">
+        
+        <div class="tabela-card">
+            <div> Pontos  </div>
+            <div class="linha-time"><span>1</span> <img src="fla.jpg"> Flamengo <span>74</span> <span>30</span> <span>20</span> <span class="green status">✔</span></div>
+            <div class="linha-time"><span>2</span> <img src="fla.jpg"> Palmeiras <span>70</span> <span>31</span> <span>19</span> <span class="green status">✔</span></div>
+            <div class="linha-time"><span>3</span> <img src="cru.png"> Cruzeiro <span>68</span> <span>32</span> <span>18</span> <span class="green status">✔</span></div>
+            <div class="linha-time"><span>4</span> <img src="cru.png"> Mirassol <span>63</span> <span>32</span> <span>18</span> <span class="green status">✔</span></div>
+            <div class="linha-time"><span>5</span> <img src="cru.png"> Botafogo <span>58</span> <span>32</span> <span>18</span> <span class="green status">✔</span></div>
+            <div class="linha-time"><span>6</span> <img src="cru.png"> Bahia <span>56</span> <span>32</span> <span>18</span> <span class="green status">✔</span></div>
+            <div class="linha-time"><span>7</span> <img src="cru.png"> Fluminense <span>55</span> <span>32</span> <span>18</span> <span class="green status">✔</span></div>
+            <div class="linha-time"><span>8</span> <img src="cru.png"> São Paulo <span>48</span> <span>32</span> <span>18</span> <span class="green status">✔</span></div>
+            <div class="linha-time"><span>9</span> <img src="cru.png"> Bragantino <span>45</span> <span>32</span> <span>18</span> <span class="green status">✔</span></div>
+
+            <!-- Continue tabela da esquerda -->
+        </div>
+
+        <div class="tabela-card">
+            <div class="linha-time"><span>14</span> <img src="gre.png"> Grêmio <span>39</span> <span>32</span> <span>10</span> <span class="green status">✔</span></div>
+            <div class="linha-time"><span>15</span> <img src="inter.png"> Internacional <span>36</span> <span>32</span> <span>9</span> <span class="green status">✔</span></div>
+            <div class="linha-time"><span>16</span> <img src="vitoria.png"> EC Vitória <span>34</span> <span>32</span> <span>8</span> <span class="red status">✖</span></div>
+            <!-- Continue tabela da direita -->
+        </div>
+
+    </div>
+
+</body>
+</html>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
