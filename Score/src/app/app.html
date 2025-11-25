@@ -4,184 +4,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScorePlay - Login, Cadastro e Início</title>
+    <title>ScorePlay</title>
 
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- FONTE -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+
     <style>
+        /* ========================================= */
+        /* -------------- CONFIG GLOBAL ------------- */
+        /* ========================================= */
+
         body {
-            background-color: #1f1f1f;
+            background: #141414;
             font-family: "Poppins", sans-serif;
-        }
-
-        /* ------ LOGIN ------ */
-        #login-section {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .login-container {
-            background: white;
-            padding: 50px;
-            width: 460px;
-            border-radius: 4px;
-        }
-
-        .logo-section {
             color: white;
-            margin-right: 80px;
+            scroll-behavior: smooth;
         }
 
-        .logo-section h1 {
-            font-size: 48px;
+        h1, h2, h3, h5 {
             font-weight: 700;
         }
 
-        .form-control {
-            border: 2px solid black;
-            border-radius: 0;
-            padding: 12px;
+        img {
+            user-select: none;
         }
 
+        .shadow-soft {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+        }
+
+        /* BOTÕES PADRÃO */
         .btn-dark-custom {
-            background: #222;
+            background: #0f0f0f;
             color: white;
             padding: 12px;
             width: 100%;
-            border-radius: 0;
-            border: 2px solid #222;
+            border: none;
+            border-radius: 8px;
             font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn-dark-custom:hover {
+            background: #1b1b1b;
+        }
+
+        .btn-outline-custom {
+            border: 2px solid #444;
+            background: transparent;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+
+        .btn-outline-custom:hover {
+            background: #ffffff13;
+        }
+
+        /* INPUT */
+        .form-control {
+            padding: 12px;
+            border-radius: 8px;
+            background: #222;
+            border: 1px solid #555;
+            color: white;
+        }
+
+        .form-control:focus {
+            background: #2c2c2c;
+            border-color: #888;
+            color: white;
         }
 
         .divider {
             display: flex;
             align-items: center;
+            gap: 10px;
+            color: #aaa;
             margin: 20px 0;
-        }
-
-        .divider span {
-            margin: 0 10px;
-            color: #555;
         }
 
         .divider::before,
         .divider::after {
             content: "";
             flex: 1;
-            border-bottom: 1px solid #aaa;
+            border-bottom: 1px solid #444;
         }
 
-        .btn-outline-custom {
-            border: 2px solid black;
-            border-radius: 0;
-            padding: 10px 20px;
-            font-weight: 600;
-            background: white;
-        }
 
-        /* ------ CADASTRO ------ */
-        #cadastro-section {
-            padding: 80px 0;
-        }
+        /* ========================================= */
+        /* ------------------ LOGIN ----------------- */
+        /* ========================================= */
 
-        .logo-title {
-            font-size: 48px;
-            font-weight: 800;
+        #login-section {
+            min-height: 100vh;
+            display: flex;
             text-align: center;
-            margin-bottom: 20px;
-            color: white;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .login-box {
+            background: #1b1b1b;
+            padding: 45px;
+            width: 440px;
+            border-radius: 16px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.35);
+        }
+
+
+        /* ========================================= */
+        /* ---------------- CADASTRO ---------------- */
+        /* ========================================= */
+
+        #cadastro-section {
+            padding: 80px 20px;
         }
 
         .card-cadastro {
-            background: white;
+            background: #1b1b1b;
             padding: 40px;
-            width: 500px;
+            max-width: 500px;
             margin: auto;
-            border-radius: 4px;
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
         }
 
         .btn-enviar {
             width: 100%;
             padding: 12px;
-            background: #222;
+            background: #0f0f0f;
             color: white;
-            border: none;
-            margin-bottom: 20px;
-            font-weight: 600;
+            border-radius: 8px;
+            font-weight: 700;
         }
 
         .arrow-back {
-            font-size: 48px;
-            color: rgb(146, 129, 129);
+            font-size: 42px;
             cursor: pointer;
+            width: fit-content;
             margin-left: 20px;
+            opacity: 0.7;
+            transition: .2s;
         }
 
-        /* ------ DASHBOARD ------ */
+        .arrow-back:hover {
+            opacity: 1;
+        }
+
+
+        /* ========================================= */
+        /* ---------------- DASHBOARD --------------- */
+        /* ========================================= */
+
+        .sidebar {
+            width: 260px;
+            background: #0e0e0e;
+            padding: 25px;
+            border-right: 1px solid #1f1f1f;
+        }
+
         .menu-item {
-            padding: 12px;
-            margin-top: 10px;
-            background-color: #4a4a4a;
-            border-radius: 8px;
+            padding: 14px;
+            margin-top: 12px;
+            background: #1f1f1f;
+            border-radius: 10px;
             cursor: pointer;
-            text-align: center;
-            transition: 0.3s;
+            transition: 0.25s;
         }
 
         .menu-item:hover {
-            background-color: #606060;
+            background: #333;
         }
 
         .feed-content {
-            background: #2c2c2c;
-            padding: 20px;
-            border-radius: 12px;
+            background: #1b1b1b;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, .3);
         }
 
 
-        /* ======================================================= */
-        /* ======================= JOGOS ========================== */
-        /* ======================================================= */
+        /* ========================================= */
+        /* ------------------- JOGOS ---------------- */
+        /* ========================================= */
 
         #jogos-section {
-            min-height: 100vh;
-            padding: 60px 0;
-            background: #1b1b1b;
-            color: white;
+            padding: 70px 0;
+            background: #131313;
         }
 
         .jogos-topo {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             padding: 20px 60px;
         }
 
         .jogos-logo {
             font-size: 48px;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .jogos-icon {
-            background: #111;
-            width: 65px;
-            height: 65px;
-            border-radius: 18px;
+            background: #1b1b1b;
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 32px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.03);
         }
 
         .titulo-jogos {
             text-align: center;
             font-size: 36px;
-            letter-spacing: 5px;
-            margin-top: 10px;
-            margin-bottom: 40px;
+            letter-spacing: 4px;
+            margin: 20px 0 40px;
         }
 
         .grid-jogos {
@@ -193,16 +239,14 @@
         }
 
         .card-jogo {
-            background: #0b132b;
-            padding: 40px;
-            border-radius: 20px;
-
+            background: #0c0c0c;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, .3);
             display: flex;
             flex-direction: column;
-            justify-content: center;
             gap: 25px;
-
-            font-size: 22px;
+            font-size: 20px;
         }
 
         .linha {
@@ -218,16 +262,16 @@
         }
 
         .info-time img {
-            width: 35px;
+            width: 38px;
         }
 
         .placar {
-            font-size: 28px;
-            font-weight: bold;
+            font-size: 30px;
+            font-weight: 800;
         }
 
         .vermelho {
-            color: #ff2a2a;
+            color: #ff3b3b;
             font-weight: bold;
         }
     </style>
@@ -235,118 +279,103 @@
 
 <body>
 
-    <!-- ******************************** -->
-    <!--            LOGIN                 -->
-    <!-- ******************************** -->
+    <!-- =================================================== -->
+    <!-- ======================= LOGIN ====================== -->
+    <!-- =================================================== -->
     <section id="login-section">
-        <div class="d-flex align-items-center justify-content-center">
-            <div class="logo-section text-center">
-                <img src="marca.jpeg" width="260" class="mb-3" />
-                <h1>ScorePlay</h1>
-            </div>
+        <div>
+            <img src="marca.jpeg" width="200" class="mb-3">
+            <h1 class="mb-4">ScorePlay</h1>
 
-            <div class="login-container shadow">
-                <h3 class="text-center mb-4 fw-bold">LOGIN</h3>
+            <div class="login-box">
+                <h3 class="mb-4">LOGIN</h3>
 
-                <input type="text" class="form-control mb-3" placeholder="Usuário" />
+                <input type="text" class="form-control mb-3" placeholder="Usuário">
 
-                <button class="btn btn-dark-custom mb-3"
-                    onclick="document.getElementById('cadastro-section').scrollIntoView({behavior:'smooth'})">
-                    ENTRAR
+                <button class="btn-dark-custom mb-3"
+                    onclick="document.getElementById('cadastro-section').scrollIntoView()">
+                    Entrar
                 </button>
 
-                <div class="divider"><span>OU</span></div>
+                <div class="divider">OU</div>
 
-                <div class="d-flex justify-content-between gap-2">
-                    <button class="btn btn-outline-custom w-50">
-                        GOOGLE <img src="google.jpg" width="20px">
-                    </button>
+                <button class="btn-outline-custom w-100 mb-2">
+                    <img src="google.jpg" width="20" class="me-1"> Entrar com Google
+                </button>
 
-                    <button class="btn btn-outline-custom w-50"
-                        onclick="document.getElementById('cadastro-section').scrollIntoView({behavior:'smooth'})">
-                        CADASTRAR
-                    </button>
-                </div>
+                <button class="btn-outline-custom w-100"
+                    onclick="document.getElementById('cadastro-section').scrollIntoView()">
+                    Criar Conta
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- ******************************** -->
-    <!--            CADASTRO              -->
-    <!-- ******************************** -->
+    <!-- =================================================== -->
+    <!-- ===================== CADASTRO ===================== -->
+    <!-- =================================================== -->
     <section id="cadastro-section">
 
-        <div class="arrow-back"
-            onclick="document.getElementById('login-section').scrollIntoView({behavior:'smooth'})">
+        <div class="arrow-back" onclick="document.getElementById('login-section').scrollIntoView()">
             &#8592;
         </div>
 
-        <h1 class="logo-title">ScorePlay</h1>
+        <h1 class="text-center mt-3">ScorePlay</h1>
 
-        <div class="card-cadastro">
-            <h3 class="mb-4">CADASTRAR USUÁRIO</h3>
+        <div class="card-cadastro mt-4">
+            <h3 class="mb-4 text-center">CADASTRAR</h3>
 
-            <input type="text" class="form-control mb-3" placeholder="NOME" />
-            <input type="password" class="form-control mb-3" placeholder="SENHA" />
-            <input type="text" class="form-control mb-4" placeholder="POSIÇÃO" />
+            <input type="text" class="form-control mb-3" placeholder="Nome">
+            <input type="password" class="form-control mb-3" placeholder="Senha">
+            <input type="text" class="form-control mb-4" placeholder="Posição">
 
-            <button class="btn-enviar"
-                onclick="document.getElementById('dashboard').scrollIntoView({behavior:'smooth'})">
-                CADASTRAR
+            <button class="btn-enviar mb-2"
+                onclick="document.getElementById('dashboard').scrollIntoView()">
+                Criar Conta
             </button>
-
-            <div class="divider mt-3">ENTRAR</div>
         </div>
-
     </section>
 
-    <!-- ******************************** -->
-    <!--            INÍCIO                -->
-    <!-- ******************************** -->
+    <!-- =================================================== -->
+    <!-- ==================== DASHBOARD ===================== -->
+    <!-- =================================================== -->
     <section id="dashboard">
 
-        <div class="d-flex" style="min-height: 100vh; overflow-x: hidden;">
+        <div class="d-flex">
 
             <!-- SIDEBAR -->
-            <div class="sidebar text-white d-flex flex-column"
-            style="width: 260px; background-color: #3a3a3a; padding: 25px 20px;">
+            <div class="sidebar">
+                <h2>ScorePlay</h2>
 
-            <h2 style="font-weight: 700; font-size: 32px;">ScorePlay</h2>
+                <div class="text-center mt-4">
+                    <img src="perfil.png" width="80" class="rounded-circle shadow-soft">
+                    <h5 class="mt-2">PERFIL</h5>
+                </div>
 
-            <div class="text-center mt-4">
-                <img src="perfil.png" style="width: 75px; height: 75px;" />
-                <h5 class="mt-2">PERFIL</h5>
+                <div class="menu-item">Criar Partida</div>
+                <div class="menu-item">Criar Campeonato</div>
+                <div class="menu-item">Jogadores</div>
+                <div class="menu-item">Calendário</div>
+                <div class="menu-item">Classificação</div>
+
+                <div class="menu-item mt-4"
+                    onclick="document.getElementById('jogos-section').scrollIntoView()">
+                    Jogos
+                </div>
             </div>
 
-            <div class="menu-item">Criar Partida</div>
-            <div class="menu-item">Criar Campeonato</div>
-            <div class="menu-item">Jogadores</div>
-            <div class="menu-item">Calendário de Jogos</div>
-            <div class="menu-item">Classificação</div>
-
-             <!-- 🔥 NOVO BOTÃO QUE VOCÊ PEDIU -->
-            <div class="menu-item" onclick="document.getElementById('jogos-section').scrollIntoView({behavior:'smooth'})">
-            Jogos
-        </div>
-
-    </div>
-
-
             <!-- CONTEÚDO -->
-            <div class="container-fluid p-4 text-white">
+            <div class="container-fluid p-5">
 
-                <h3>Bem-vindo ao ScorePlay!</h3>
+                <h3 class="mb-4">Bem-vindo ao ScorePlay!</h3>
 
-                <div class="feed-content mt-4">
-
-                    <h5 class="mb-3">📢 Últimas Notícias</h5>
-
+                <div class="feed-content">
+                    <h5>📢 Últimas Notícias</h5>
                     <p>Veja as novidades dos jogos, amistosos e campeonatos.</p>
 
-                    <div id="carouselFeed" class="carousel slide mt-3" data-bs-ride="carousel">
+                    <div id="carouselFeed" class="carousel slide mt-4" data-bs-ride="carousel">
 
                         <div class="carousel-inner">
-
                             <div class="carousel-item active">
                                 <img src="foto.png" class="d-block w-100 rounded">
                             </div>
@@ -358,7 +387,6 @@
                             <div class="carousel-item">
                                 <img src="foto3.png" class="d-block w-100 rounded">
                             </div>
-
                         </div>
 
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselFeed"
@@ -372,16 +400,15 @@
                         </button>
 
                     </div>
-
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- ******************************** -->
-    <!--              JOGOS              -->
-    <!-- ******************************** -->
+    <!-- =================================================== -->
+    <!-- ======================= JOGOS ====================== -->
+    <!-- =================================================== -->
     <section id="jogos-section">
 
         <div class="jogos-topo">
@@ -393,7 +420,7 @@
 
         <div class="grid-jogos">
 
-            <!-- CARD 1 -->
+            <!-- JOGO 1 -->
             <div class="card-jogo">
                 <div class="linha">
                     <div class="info-time">
@@ -404,20 +431,20 @@
                 </div>
 
                 <div class="linha">
-                    <div class="fla">
-                        <img src="fla.jpg" width="35px" margin="9526px">
-                        <span>       Flamengo <span class="vermelho">■</span></span>
+                    <div class="info-time">
+                        <img src="fla.jpg">
+                        <span>Flamengo <span class="vermelho">■</span></span>
                     </div>
                     <span class="placar">2</span>
                 </div>
             </div>
 
-            <!-- CARD 2 -->
+            <!-- JOGO 2 -->
             <div class="card-jogo">
                 <div class="linha">
-                    <div class="bota.png">
-                        <img src="bota.png" width="35px">
-                        <span>      Botafogo</span>
+                    <div class="info-time">
+                        <img src="bota.png">
+                        <span>Botafogo</span>
                     </div>
                     <span class="placar">1</span>
                 </div>
@@ -431,7 +458,7 @@
                 </div>
             </div>
 
-            <!-- CARD 3 -->
+            <!-- JOGO 3 -->
             <div class="card-jogo">
                 <div class="linha">
                     <div class="info-time">
@@ -450,7 +477,7 @@
                 </div>
             </div>
 
-            <!-- CARD 4 -->
+            <!-- JOGO 4 -->
             <div class="card-jogo">
                 <div class="linha">
                     <div class="info-time">
@@ -470,7 +497,6 @@
             </div>
 
         </div>
-
     </section>
 
     <!-- BOOTSTRAP -->
