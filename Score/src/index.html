@@ -441,7 +441,7 @@
             margin: 40px auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 35px;
+            gap: 95px;
         }
 
         .tabela-card {
@@ -453,10 +453,10 @@
 
         .linha-time {
             display: grid;
-            grid-template-columns: 25px 35px 1fr 40px 40px 40px 30px; 
+            grid-template-columns: 25px 35px 2fr 40px 40px 40px 30px; 
             /* pos | img | nome | pts | jogos | vit | status */
             align-items: center;
-            gap: 10px;
+            gap: 30px;
             padding: 10px 15px;
             border-bottom: 1px solid #333;
         }
@@ -500,21 +500,19 @@
         <div class="login-container shadow">
             <h3 class="text-center mb-4 fw-bold">LOGIN</h3>
             
-            <input type="text" class="form-control mb-3" placeholder="Usuário">
-            
-            <input type="password" class="form-control mb-4" placeholder="Senha">
+            <input type="text" id="usuario" class="form-control mb-3" placeholder="Usuário">
+            <input type="password" id="senha" class="form-control mb-4" placeholder="Senha">
 
-
-            <button class="btn-enviar"
-                onclick="document.getElementById('dashboard').scrollIntoView({behavior:'smooth'})">
-           Entrar 
-        </button>
+            <!-- Botão agora chama somente validarLogin() -->
+            <button class="btn-enviar" onclick="validarLogin()">
+                Entrar
+            </button>
 
             <div class="divider"><span>OU</span></div>
 
             <div class="d-flex gap-2">
                 <button class="btn-outline-custom w-50">
-                    GOOGLE <img src="google.jpg" width="20" font-size="14px" style="margin-left: 6px; color:black;" color>
+                    GOOGLE <img src="google.jpg" width="20" style="margin-left: 6px;">
                 </button>
 
                 <button class="btn-outline-custom w-50"
@@ -525,6 +523,35 @@
         </div>
     </div>
 </section>
+
+<!-- SCRIPT -->
+<script>
+function validarLogin() {
+    const usuario = document.getElementById("usuario").value.trim();
+    const senha = document.getElementById("senha").value.trim();
+
+    // LOGIN PADRÃO (pode mudar)
+    const usuarioCorreto = "jogador@123";
+    const senhaCorreta = "1234";
+
+    // Campos vazios
+    if (usuario === "" || senha === "") {
+        alert("Preencha todos os campos.");
+        return;
+    }
+
+    // Validação correta
+    if (usuario === usuarioCorreto && senha === senhaCorreta) {
+        // Aqui junta os códigos → validação + scroll suave
+        document.getElementById('dashboard')
+                .scrollIntoView({ behavior: 'smooth' });
+
+    } else {
+        alert("Usuário ou senha incorretos!");
+    }
+}
+</script>
+
 
 <!-- CADASTRO -->
 <section id="cadastro-section">
@@ -570,7 +597,7 @@
                     onclick="document.getElementById('Classificação').scrollIntoView({behavior:'smooth'})">
                     Classificação
                 </div>
-                <div class="menu-item">Calendário de Jogos</div>
+                <div class="menu-item">Consultar torneios disponiveis</div>
 
                 <div class="menu-item"
                     onclick="document.getElementById('jogos-section').scrollIntoView({behavior:'smooth'})">
@@ -733,31 +760,99 @@
 
     <div class="subtitulo">TABELA DO CAMPEONATO</div>
 
-    <div class="tabela-wrapper">
-        
-        <div class="tabela-card">
-            <div> Pontos  </div>
-            <div class="linha-time"><span>1</span> <img src="fla.jpg"> Flamengo <span>74</span> <span>30</span> <span>20</span> <span class="green status">✔</span></div>
-            <div class="linha-time"><span>2</span> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMUD8SkOpEkdjVi9hmQsMgD_f1XNsNQ9Fwdg&s"> Palmeiras <span>70</span> <span>31</span> <span>19</span> <span class="green status">✔</span></div>
-            <div class="linha-time"><span>3</span> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcCpw-L-iu5yfUsP2pN8pNJxtp_9HTFUGS2w&s"> Cruzeiro <span>68</span> <span>32</span> <span>18</span> <span class="green status">✔</span></div>
-            <div class="linha-time"><span>4</span> <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Mirassol_FC_logo.png"> Mirassol <span>63</span> <span>32</span> <span>18</span> <span class="green status">✔</span></div>
-            <div class="linha-time"><span>5</span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Botafogo_de_Futebol_e_Regatas_logo.svg/1816px-Botafogo_de_Futebol_e_Regatas_logo.svg.png"> Botafogo <span>58</span> <span>32</span> <span>18</span> <span class="green status">✔</span></div>
-            <div class="linha-time"><span>6</span> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzgCFGzdMgFti_cp1I9ymEk8jwF6Rwxya-AQ&s"> Bahia <span>56</span> <span>32</span> <span>18</span> <span class="green status">✔</span></div>
-            <div class="linha-time"><span>7</span> <img src="https://i.pinimg.com/236x/70/2b/e0/702be0c4b95bb3222554dc60d153c95e.jpg"> Fluminense <span>55</span> <span>32</span> <span>18</span> <span class="green status">✔</span></div>
-            <div class="linha-time"><span>8</span> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqvGKXjzKlDDy_piRDjSkWEqaVVtHEkxSNaQ&s"> São Paulo <span>48</span> <span>32</span> <span>18</span> <span class="green status">✔</span></div>
-            <div class="linha-time"><span>9</span> <img src="https://upload.wikimedia.org/wikipedia/pt/9/9e/RedBullBragantino.png"> Bragantino <span>45</span> <span>32</span> <span>18</span> <span class="green status">✔</span></div>
+<div class="tabela-wrapper">
 
-            <!-- Continue tabela da esquerda -->
+    <div class="tabela-card">
+
+        <!-- CABEÇALHO -->
+        <div class="linha-time header">
+            <span>P</span>
+            <span>Time</span>
+            <span>Pontos</span>
+            <span>Jogos</span>
+            <span>Vitórias</span>
+            <span>Status</span>
         </div>
 
-        <div class="tabela-card">
-            <div class="linha-time"><span>14</span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Cear%C3%A1_Sporting_Club_logo.svg/1081px-Cear%C3%A1_Sporting_Club_logo.svg.png"> Ceará <span>39</span> <span>32</span> <span>10</span> <span class="green status">✔</span></div>
-            <div class="linha-time"><span>15</span> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Escudo_do_Sport_Club_Internacional.svg"> Internacional <span>36</span> <span>32</span> <span>9</span> <span class="green status">✔</span></div>
-            <div class="linha-time"><span>16</span> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIs9LbB3gGmft7jRxLXxxdNsHZ62C34foU7Q&s"> EC Vitória <span>34</span> <span>32</span> <span>8</span> <span class="red status">✖</span></div>
-            <!-- Continue tabela da direita -->
+        <div class="linha-time"><span>1</span> <img src="fla.jpg"> Flamengo <span>74</span> <span>30</span> <span>20</span> <span class="green status">✔</span>
+        </div>
+
+        <div class="linha-time"><span>2</span> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMUD8SkOpEkdjVi9hmQsMgD_f1XNsNQ9Fwdg&s"> Palmeiras <span>70</span> <span>31</span> <span>19</span> <span class="green status">✔</span>
+        </div>
+
+        <div class="linha-time"> <span>3</span> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcCpw-L-iu5yfUsP2pN8pNJxtp_9HTFUGS2w&s">Cruzeiro <span>68</span> <span>32</span> <span>18</span> <span class="green status">✔</span>
+        </div>
+
+        <div class="linha-time"><span>4</span> <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Mirassol_FC_logo.png">Mirassol <span>63</span> <span>32</span> <span>18</span> <span class="green status">✔</span>
+        </div>
+
+        <div class="linha-time"><span>5</span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Botafogo_de_Futebol_e_Regatas_logo.svg/1816px-Botafogo_de_Futebol_e_Regatas_logo.svg.png">Botafogo <span>58</span> <span>32</span> <span>18</span> <span class="green status">✔</span>
+        </div>
+
+        <div class="linha-time"><span>6</span> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzgCFGzdMgFti_cp1I9ymEk8jwF6Rwxya-AQ&s">Bahia <span>56</span> <span>32</span> <span>18</span> <span class="green status">✔</span>
+        </div>
+
+        <div class="linha-time"><span>7</span> <img src="https://i.pinimg.com/236x/70/2b/e0/702be0c4b95bb3222554dc60d153c95e.jpg">Fluminense <span>55</span> <span>32</span> <span>18</span> <span class="green status">✔</span>
+        </div>
+
+        <div class="linha-time"><span>8</span> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqvGKXjzKlDDy_piRDjSkWEqaVVtHEkxSNaQ&s">São Paulo <span>48</span> <span>32</span> <span>18</span> <span class="green status">✔</span>
+        </div>
+
+        <div class="linha-time"><span>9</span> <img src="https://upload.wikimedia.org/wikipedia/pt/9/9e/RedBullBragantino.png"> Grêmio <span>46</span> <span>32</span> <span>18</span> <span class="green status">✔</span>
+        </div>
+
+        <div class="linha-time"><span>10</span> <img src="https://upload.wikimedia.org/wikipedia/pt/9/9e/RedBullBragantino.png">Bragantino <span>45</span> <span>32</span> <span>18</span>  <span class="green status">✔</span>
+        </div>
+
+        <div class="linha-time"><span>11</span> <img src="https://upload.wikimedia.org/wikipedia/pt/9/9e/RedBullBragantino.png">Corinthians <span>45</span> <span>32</span> <span>18</span><span class="green status">✔</span>
+        </div>
+
+        <div class="linha-time"><span>12</span> <img src="https://upload.wikimedia.org/wikipedia/pt/9/9e/RedBullBragantino.png">Atletico MG <span>45</span> <span>32</span> <span>18</span>  <span class="green status">✔</span>
+        </div>
+
+        <div class="linha-time"><span>13</span> <img src="https://upload.wikimedia.org/wikipedia/pt/9/9e/RedBullBragantino.png">Vasco <span>42</span> <span>32</span> <span>18</span> <span class="green status">✔</span>
         </div>
 
     </div>
+
+    <!-- SEGUNDA COLUNA -->
+    <div class="tabela-card">
+
+        <!-- CABEÇALHO REPETIDO PARA A SEGUNDA COLUNA -->
+        <div class="linha-time header">
+            <span >Pos.</span>
+            <span>Time</span>
+            <span>Pontos</span>
+            <span>Jogos</span>
+            <span>Vitórias</span>
+            <span>Status</span>
+        </div>
+
+        <div class="linha-time"><span>14</span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Cear%C3%A1_Sporting_Club_logo.svg/1081px-Cear%C3%A1_Sporting_Club_logo.svg.png">Ceará <span>42</span> <span>32</span> <span>10</span> <span class="green status">✔</span>
+        </div>
+
+        <div class="linha-time"><span>15</span> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Escudo_do_Sport_Club_Internacional.svg">Internacional <span>41</span> <span>32</span> <span>9</span> <span class="green status">✔</span>
+        </div>
+
+        <div class="linha-time"><span>16</span> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIs9LbB3gGmft7jRxLXxxdNsHZ62C34foU7Q&s"> EC Vitória <span>39</span> <span>32</span> <span>8</span> <span class="red status">✖</span>
+        </div>
+
+        <div class="linha-time"><span>17</span> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVDTpGTgTs_lglS0i6EyxTujvuyAekmEGkVA&s"> Santos <span>38</span> <span>32</span> <span>8</span> <span class="red status">✖</span>
+        </div>
+
+        <div class="linha-time"><span>18</span> <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Fortaleza_EC_2018.png"> Fortaleza <span>34</span> <span>32</span> <span>8</span><span class="red status">✖</span>
+        </div>
+
+        <div class="linha-time"><span>19</span> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcgIIhLEvkPn-WssfkErchHHUQKfiptD52WA&s">Juventude <span>33</span> <span>32</span> <span>8</span> <span class="red status">✖</span>
+        </div>
+
+        <div class="linha-time"><span>20</span> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHNnLk6gcxfoAnrl8dYev3Epx3UObJexqudw&s">Sport Recife <span>17</span> <span>32</span> <span>8</span> <span class="red status">✖</span>
+        </div>
+
+    </div>
+
+</div>
+
 
 </body>
 </html>
