@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" data-bs-theme="dark">
-<head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ScorePlay - Login, Cadastro e Início</title>
@@ -13,7 +13,6 @@
             font-family: "Poppins", sans-serif;
             color: white;
         }
-
         /* ----------------------------------------------- */
         /* LOGIN                                           */
         /* ----------------------------------------------- */
@@ -190,6 +189,14 @@
             from { opacity: 0; transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
         }
+        .banner {
+        width: 100%;
+        height: 300px;
+        background-image: url('fundo.jpg');
+        background-size: cover;
+        background-position: center;
+}
+
 
 
         /* ----------------------------------------------- */
@@ -559,6 +566,7 @@ function validarLogin() {
          onclick="document.getElementById('login-section').scrollIntoView({behavior:'smooth'})">
         &#8592;
     </div>
+    
 
     <h1 class="logo-title">ScorePlay</h1>
 
